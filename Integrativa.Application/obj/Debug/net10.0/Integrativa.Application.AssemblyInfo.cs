@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Integrativa.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+784f300d3f7691d78250792b878dee39996e48a4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Integrativa.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Integrativa.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

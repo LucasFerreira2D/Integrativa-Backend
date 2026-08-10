@@ -1,0 +1,26 @@
+# Build results
+bin/
+obj/
+
+# Rider / JetBrains
+.idea/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# User-specific files
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

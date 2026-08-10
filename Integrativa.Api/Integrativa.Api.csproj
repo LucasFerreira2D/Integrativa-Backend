@@ -6,4 +6,9 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Integrativa.Application\Integrativa.Application.csproj" />
+      <ProjectReference Include="..\Integrativa.Infrastructure\Integrativa.Infrastructure.csproj" />
+    </ItemGroup>
+
 </Project>

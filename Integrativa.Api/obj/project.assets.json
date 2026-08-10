@@ -1,11 +1,67 @@
 {
   "version": 4,
   "targets": {
-    "net10.0": {}
+    "net10.0": {
+      "Integrativa.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Integrativa.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Integrativa.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Integrativa.Application.dll": {}
+        }
+      },
+      "Integrativa.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/Integrativa.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Integrativa.Domain.dll": {}
+        }
+      },
+      "Integrativa.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "Integrativa.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Integrativa.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Integrativa.Infrastructure.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Integrativa.Application/1.0.0": {
+      "type": "project",
+      "path": "../Integrativa.Application/Integrativa.Application.csproj",
+      "msbuildProject": "../Integrativa.Application/Integrativa.Application.csproj"
+    },
+    "Integrativa.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Integrativa.Domain/Integrativa.Domain.csproj",
+      "msbuildProject": "../Integrativa.Domain/Integrativa.Domain.csproj"
+    },
+    "Integrativa.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Integrativa.Infrastructure/Integrativa.Infrastructure.csproj",
+      "msbuildProject": "../Integrativa.Infrastructure/Integrativa.Infrastructure.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0": []
+    "net10.0": [
+      "Integrativa.Application >= 1.0.0",
+      "Integrativa.Infrastructure >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\lucas\\.nuget\\packages\\": {}
@@ -32,7 +88,14 @@
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\lucas\\RiderProjects\\Integrativa-Backend\\Integrativa.Application\\Integrativa.Application.csproj": {
+              "projectPath": "C:\\Users\\lucas\\RiderProjects\\Integrativa-Backend\\Integrativa.Application\\Integrativa.Application.csproj"
+            },
+            "C:\\Users\\lucas\\RiderProjects\\Integrativa-Backend\\Integrativa.Infrastructure\\Integrativa.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\lucas\\RiderProjects\\Integrativa-Backend\\Integrativa.Infrastructure\\Integrativa.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
