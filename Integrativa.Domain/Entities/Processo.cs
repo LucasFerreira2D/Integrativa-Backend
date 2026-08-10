@@ -4,6 +4,8 @@ namespace Integrativa.Domain.Entities;
 
 public class Processo
 {
+    private readonly List<Parte> _partes = new List<Parte>();
+    private readonly List<Andamento> _andamentos = new List<Andamento>();
     public Guid Id { get; private set; }
     public string Numero { get; private set; } = null!;
     public string Assunto { get; private set; } = null!;
@@ -11,12 +13,13 @@ public class Processo
     public StatusProcesso Status { get; private set; }
     public DateTime DataAlteracao { get; private set; }
     public string UsuarioAlteracao { get; private set; } = null!;
+    public IReadOnlyCollection<Parte> Partes { get { return _partes.AsReadOnly(); } }
+    public IReadOnlyCollection<Andamento> Andamentos { get { return _andamentos.AsReadOnly(); } }
     
-    public Processo()
+    private  Processo()
     {
     }
-
-
+    
     public Processo(Guid id, string numero, string assunto, DateTime dataCriacao, StatusProcesso status, DateTime dataAlteracao, string usuarioAlteracao)
     {
         Id = id;

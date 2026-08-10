@@ -9,7 +9,7 @@ public class Andamento
     public DateTime DataAlteracao { get; private set; }
     public string UsuarioAlteracao { get; private set; } = null!;
 
-    public Andamento()
+    private Andamento()
     {
     }
 

@@ -11,7 +11,7 @@ public class Parte
     public DateTime DataAlteracao { get; private set; }
     public string UsuarioAlteracao { get; private set; } = null!;
 
-    public Parte()
+    private  Parte()
     {
     }
 
