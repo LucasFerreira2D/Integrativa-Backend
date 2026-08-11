@@ -2,7 +2,7 @@
 using Integrativa.Application.DTOs;
 using Integrativa.Domain.Entities;
 
-namespace Integrativa.Application.Interfaces.Repositories;
+namespace Integrativa.Application.Repositories;
 
 public interface IProcessoRepository
 {
