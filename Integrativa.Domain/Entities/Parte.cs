@@ -11,17 +11,22 @@ public class Parte
     public DateTime DataAlteracao { get; private set; }
     public string UsuarioAlteracao { get; private set; } = null!;
 
-    private  Parte()
+    private Parte()
     {
     }
 
-    public Parte(Guid id, Guid processoId, string nome, TipoParte tipoParte, DateTime dataAlteracao, string usuarioAlteracao)
+    private Parte(Guid id, Guid processoId, string nome, TipoParte tipoParte, string usuarioAlteracao)
     {
         Id = id;
         ProcessoId = processoId;
         Nome = nome;
         TipoParte = tipoParte;
-        DataAlteracao = dataAlteracao;
+        DataAlteracao = DateTime.UtcNow;
         UsuarioAlteracao = usuarioAlteracao;
+    }
+
+    public static Parte Criar(Guid processoId, string nome, TipoParte tipoParte, string usuario)
+    {
+        return new Parte(Guid.NewGuid(), processoId, nome, tipoParte, usuario);
     }
 }

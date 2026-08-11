@@ -15,19 +15,65 @@ public class Processo
     public string UsuarioAlteracao { get; private set; } = null!;
     public IReadOnlyCollection<Parte> Partes { get { return _partes.AsReadOnly(); } }
     public IReadOnlyCollection<Andamento> Andamentos { get { return _andamentos.AsReadOnly(); } }
-    
-    private  Processo()
+
+    private Processo()
     {
     }
-    
-    public Processo(Guid id, string numero, string assunto, DateTime dataCriacao, StatusProcesso status, DateTime dataAlteracao, string usuarioAlteracao)
+
+    private Processo(Guid id, string numero, string assunto, DateTime dataCriacao, StatusProcesso status)
     {
         Id = id;
         Numero = numero;
         Assunto = assunto;
         DataCriacao = dataCriacao;
         Status = status;
-        DataAlteracao = dataAlteracao;
-        UsuarioAlteracao = usuarioAlteracao;
+    }
+
+    public static Processo Criar(string numero, string assunto, StatusProcesso status)
+    {
+        return new Processo(Guid.NewGuid(), numero, assunto, DateTime.UtcNow, status);
+    }
+
+    public void Atualizar(string numero, string assunto, StatusProcesso status)
+    {
+        Numero = numero;
+        Assunto = assunto;
+        Status = status;
+    }
+
+    public void RegistrarAlteracao(string usuario)
+    {
+        DataAlteracao = DateTime.UtcNow;
+        UsuarioAlteracao = usuario;
+    }
+
+    public Parte AdicionarParte(string nome, TipoParte tipo, string usuario)
+    {
+        Parte parte = Parte.Criar(Id, nome, tipo, usuario);
+        _partes.Add(parte);
+        return parte;
+    }
+
+    public void RemoverParte(Guid parteId)
+    {
+        Parte? parte = _partes.FirstOrDefault(p => p.Id == parteId);
+
+        if (parte != null)
+            _partes.Remove(parte);
+    }
+
+    public Andamento AdicionarAndamento(DateTime data, string descricao, string usuario)
+    {
+        Andamento andamento = Andamento.Criar(Id, data, descricao, usuario);
+        _andamentos.Add(andamento);
+        return andamento;
+    }
+
+    public void RemoverAndamento(Guid andamentoId)
+    {
+        Andamento? andamento = _andamentos.FirstOrDefault(a => a.Id == andamentoId);
+
+        if (andamento != null)
+            _andamentos.Remove(andamento);
     }
 }

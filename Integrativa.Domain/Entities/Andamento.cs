@@ -13,13 +13,18 @@ public class Andamento
     {
     }
 
-    public Andamento(Guid id, Guid processoId, string descricao, DateTime dataCriacao, DateTime dataAlteracao, string usuarioAlteracao)
+    private Andamento(Guid id, Guid processoId, string descricao, DateTime dataCriacao, string usuarioAlteracao)
     {
         Id = id;
         ProcessoId = processoId;
         Descricao = descricao;
         DataCriacao = dataCriacao;
-        DataAlteracao = dataAlteracao;
+        DataAlteracao = DateTime.UtcNow;
         UsuarioAlteracao = usuarioAlteracao;
+    }
+
+    public static Andamento Criar(Guid processoId, DateTime data, string descricao, string usuario)
+    {
+        return new Andamento(Guid.NewGuid(), processoId, descricao, data, usuario);
     }
 }
