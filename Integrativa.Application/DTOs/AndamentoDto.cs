@@ -2,7 +2,7 @@
 
 public record AndamentoDto(
     Guid Id,
-    DateTime DataCriacao,
+    DateTime Data,
     string Descricao,
     DateTime DataAlteracao,
     string UsuarioAlteracao);
