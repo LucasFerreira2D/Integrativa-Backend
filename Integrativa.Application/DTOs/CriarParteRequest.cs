@@ -9,4 +9,4 @@ public record CriarParteRequest(
     string Nome,
 
     [EnumDataType(typeof(TipoParte), ErrorMessage = "Tipo de parte inválido.")]
-    TipoParte TipoParte);
+    TipoParte Tipo);

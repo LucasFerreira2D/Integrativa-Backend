@@ -5,6 +5,6 @@ namespace Integrativa.Application.DTOs;
 public record ParteDto(
     Guid Id,
     string Nome,
-    TipoParte TipoParte,
+    TipoParte Tipo,
     DateTime DataAlteracao,
     string UsuarioAlteracao);

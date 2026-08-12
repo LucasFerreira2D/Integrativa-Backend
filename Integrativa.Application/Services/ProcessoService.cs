@@ -67,7 +67,7 @@ public class ProcessoService
     {
         Processo processo = Carregar(processoId);
 
-        Parte parte = processo.AdicionarParte(request.Nome, request.TipoParte, Usuario);
+        Parte parte = processo.AdicionarParte(request.Nome, request.Tipo, Usuario);
         processo.RegistrarAlteracao(Usuario);
 
         _repository.Salvar();
