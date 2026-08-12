@@ -2,7 +2,7 @@
 
 API REST para cadastrar e acompanhar processos, com as partes envolvidas (interessadas e contrárias) e o histórico de andamentos de cada um.
 
-Este repositório tem só o backend.
+Este repositório tem só o backend. A interface web está em [Integrativa-Frontend](https://github.com/LucasFerreira2D/Integrativa-Frontend).
 
 ## Stack
 
@@ -113,7 +113,7 @@ Criando um processo:
 ```bash
 curl -X POST http://localhost:5122/api/processos \
   -H "Content-Type: application/json" \
-  -d '{"numero":"0001234-56.2026.8.26.0100","assunto":"Ação de cobrança","status":0}'
+  -d '{"numero":"0001234-56.2026.8.26.0100","assunto":"Ação de cobrança","status":"Ativo"}'
 ```
 
 Adicionando uma parte e um andamento:
@@ -121,14 +121,14 @@ Adicionando uma parte e um andamento:
 ```bash
 curl -X POST http://localhost:5122/api/processos/{id}/partes \
   -H "Content-Type: application/json" \
-  -d '{"nome":"João da Silva","tipoParte":0}'
+  -d '{"nome":"João da Silva","tipo":"Interessada"}'
 
 curl -X POST http://localhost:5122/api/processos/{id}/andamentos \
   -H "Content-Type: application/json" \
   -d '{"data":"2026-08-11T14:00:00Z","descricao":"Petição inicial protocolada"}'
 ```
 
-Atenção com os enums: no corpo do JSON eles vão como número (`status`: 0 = Ativo, 1 = Finalizado, 2 = Arquivado; `tipoParte`: 0 = Interessada, 1 = Contrária). Na query string, por outro lado, pode mandar o nome (`?status=Ativo`), porque ali quem converte é o model binder e não o serializador.
+Os enums vão e voltam sempre pelo nome, tanto no corpo do JSON quanto na query string: `status` aceita `Ativo`, `Finalizado` ou `Arquivado`, e `tipo` aceita `Interessada` ou `Contraria`. Quem cuida do corpo é o `JsonStringEnumConverter` registrado no `Program.cs`; na query string, o model binder já convertia por nome desde sempre.
 
 No detalhe do processo os andamentos vêm do mais recente para o mais antigo e as partes em ordem alfabética.
 
@@ -141,5 +141,5 @@ Todo erro sai no formato `ProblemDetails`. Payload inválido dá 400 (a validaç
 - Testes automatizados
 - Dockerfile / docker-compose
 - Swagger (o contrato está descrito aqui mesmo)
-- CORS, que precisa ser configurado no `Program.cs` para um frontend em outra origem conseguir consumir a API
+- CORS, que precisa ser configurado no `Program.cs` para um frontend em outra origem conseguir consumir a API. Em desenvolvimento o frontend não precisa: o dev server do Angular tem um proxy que repassa `/api` para cá, então o browser enxerga tudo na mesma origem
 - Autenticação: os campos de auditoria (`DataAlteracao` e `UsuarioAlteracao`) já existem nas tabelas, mas hoje o usuário é fixo (`"Sistema"`)
